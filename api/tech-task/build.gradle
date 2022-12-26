@@ -1,0 +1,34 @@
+openApiValidate {
+    inputSpec = "${rootDir}/yaml-spec/openapi.yaml".toString()
+}
+
+openApiGenerate {
+    inputSpec = "$rootDir/yaml-spec/openapi.yaml".toString()
+    outputDir = "$projectDir".toString()
+    apiPackage = "tech.task.d3.cloud.api"
+    modelPackage = "tech.task.d3.cloud.api.model"
+}
+
+compileJava.dependsOn('openApiGenerate')
+
+task customCleanUp(type:Delete) {
+    delete "$rootDir/api/tech-task/src"
+}
+
+tasks.clean.dependsOn(tasks.customCleanUp)
+
+// Keep change backward compatible by preserving artefact name
+// even though project name has changed
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "tech-task-api"
+        }
+    }
+}
+
+dependencies {
+    implementation "org.openapitools:openapi-generator-gradle-plugin:${openApiGraglePluginVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.2'
+}

@@ -1,0 +1,7 @@
+
+# Generated sources
+/src
+/pom.xml
+/.openapi-generator-ignore
+/.openapi-generator
+/README.md

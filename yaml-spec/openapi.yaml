@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: Swagger Tech-Task-Full-Stack - OpenAPI 3.0
+  description: |-
+    This is a Tech-Task-Full-Stack Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io).
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+    Some useful links:
+    - [The Tech-Task-Full-Stack repository](https://github.com/JoePalmeras66/tech-task-full-stack-dev-backend)
+    - [The source API definition for the Tech-Task-Full-Stack](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8080/techtask/api/v1
+    description: for local testing
+tags:
+  - name: randomusers
+    description: Everything about your Random User's
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /randomusers/all:
+    get:
+      tags:
+        - randomusersPagenated
+      summary: Find ALL Random User's by Country (Pagination)
+      description: Find ALL Random User's by Country (Pagination)
+      operationId: getPaginatedRandomUsers
+      parameters:
+        - $ref: "#/components/parameters/country"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/size"
+
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageableRandomUsers'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Random User's not found
+        '405':
+          description: Validation exception
+
+  /randomusers/all/stream:
+    get:
+      tags:
+        - randomusersStream
+      summary: Find ALL Random User's by Country
+      description: Find ALL Random User's by Country
+      operationId: getRandomUsers
+      parameters:
+        - $ref: "#/components/parameters/country"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRandomUsers'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Random User's not found
+        '405':
+          description: Validation exception
+
+components:
+  schemas:
+    RandomUsers:
+      type: object
+      required:
+        - first
+        - last
+        - gender
+        - email
+        - country
+        - city
+        - state
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        gender:
+          type: string
+        email:
+          type: string
+          format: email
+        country:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+
+    PageableRandomUsers:
+      type: "object"
+      required:
+        - contents
+        - pageIndex
+        - pageSize
+        - pageCount
+        - totalElements
+      properties:
+        contents:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/RandomUsers'
+        pageIndex:
+          type: integer
+        pageSize:
+          type: integer
+        pageCount:
+          type: integer
+        totalElements:
+          type: integer
+          format: int64
+
+    ListRandomUsers:
+      type: "array"
+      items:
+        $ref: '#/components/schemas/RandomUsers'
+
+  parameters:
+    country:
+      name: country
+      in: query
+      schema:
+        type: string
+        default: "Germany"
+      required: true
+      description: The country used for filtering
+
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 0
+      required: false
+      description: The page index used for pagination
+
+    size:
+      name: size
+      in: query
+      schema:
+        type: integer
+        default: 10
+      required: false
+      description: The page size used for pagination
