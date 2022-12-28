@@ -33,12 +33,15 @@ paths:
   /randomusers/all:
     get:
       tags:
-        - randomusersPagenated
-      summary: Find ALL Random User's by Country (Pagination)
-      description: Find ALL Random User's by Country (Pagination)
-      operationId: getPaginatedRandomUsers
+        - randomusers
+      summary: Find ALL Random User's by multiple Filter-Parameters (Pagination)
+      description: Find ALL Random User's by multiple Filter-Parameters (Pagination)
+      operationId: getRandomUsers
       parameters:
         - $ref: "#/components/parameters/country"
+        - $ref: "#/components/parameters/state"
+        - $ref: "#/components/parameters/city"
+        - $ref: "#/components/parameters/gender"
         - $ref: "#/components/parameters/page"
         - $ref: "#/components/parameters/size"
 
@@ -59,12 +62,15 @@ paths:
   /randomusers/all/stream:
     get:
       tags:
-        - randomusersStream
-      summary: Find ALL Random User's by Country
-      description: Find ALL Random User's by Country
-      operationId: getRandomUsers
+        - randomusers
+      summary: Find ALL Random User's by multiple Filter-Parameters
+      description: Find ALL Random User's by multiple Filter-Parameters
+      operationId: getStreamRandomUsers
       parameters:
         - $ref: "#/components/parameters/country"
+        - $ref: "#/components/parameters/state"
+        - $ref: "#/components/parameters/city"
+        - $ref: "#/components/parameters/gender"
       responses:
         '200':
           description: Successful operation
@@ -143,8 +149,35 @@ components:
       schema:
         type: string
         default: "Germany"
-      required: true
+      required: false
       description: The country used for filtering
+
+    state:
+      name: state
+      in: query
+      schema:
+        type: string
+        default: "Bayern"
+      required: false
+      description: The state used for filtering
+
+    city:
+      name: city
+      in: query
+      schema:
+        type: string
+        default: ""
+      required: false
+      description: The city used for filtering
+
+    gender:
+      name: gender
+      in: query
+      schema:
+        type: string
+        default: "female"
+      required: false
+      description: The gender used for filtering
 
     page:
       name: page
