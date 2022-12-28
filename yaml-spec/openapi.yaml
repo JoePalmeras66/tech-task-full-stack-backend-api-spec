@@ -48,7 +48,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageableRandomUsers'
+                $ref: '#/components/schemas/PageableRandomUserDTO'
         '400':
           description: Invalid ID supplied
         '404':
@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRandomUsers'
+                $ref: '#/components/schemas/ListRandomUserDTO'
         '400':
           description: Invalid ID supplied
         '404':
@@ -81,7 +81,7 @@ paths:
 
 components:
   schemas:
-    RandomUsers:
+    RandomUserDTO:
       type: object
       required:
         - first
@@ -108,7 +108,7 @@ components:
         state:
           type: string
 
-    PageableRandomUsers:
+    PageableRandomUserDTO:
       type: "object"
       required:
         - contents
@@ -120,7 +120,7 @@ components:
         contents:
           type: "array"
           items:
-            $ref: '#/components/schemas/RandomUsers'
+            $ref: '#/components/schemas/RandomUserDTO'
         pageIndex:
           type: integer
         pageSize:
@@ -131,10 +131,10 @@ components:
           type: integer
           format: int64
 
-    ListRandomUsers:
+    ListRandomUserDTO:
       type: "array"
       items:
-        $ref: '#/components/schemas/RandomUsers'
+        $ref: '#/components/schemas/RandomUserDTO'
 
   parameters:
     country:
