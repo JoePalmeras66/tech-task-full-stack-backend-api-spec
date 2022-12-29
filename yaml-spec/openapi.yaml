@@ -9,7 +9,7 @@ info:
 
     Some useful links:
     - [The Tech-Task-Full-Stack repository](https://github.com/JoePalmeras66/tech-task-full-stack-dev-backend)
-    - [The source API definition for the Tech-Task-Full-Stack](https://github.com/JoePalmeras66/tech-task-full-stack-backend-api-spec/blob/master/yaml-spec/openapi.yaml)
+    - [The source API definition for the Tech-Task-Full-Stack](https://gist.githubusercontent.com/JoePalmeras66/5841f6371c95614e7ea0b285e9b6ab30/raw/cb4dcbf2a0a85c461e6fa1266dc10750379aeb0b/openapi-randomusers.yaml)
   termsOfService: http://swagger.io/terms/
   contact:
     email: apiteam@swagger.io
