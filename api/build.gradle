@@ -47,7 +47,8 @@ subprojects{
                 skipDefaultInterface   : "true",
                 hideGenerationTimestamp: "true",
                 generateSupportingFiles: "true",
-                useTags                : "true"
+                useTags                : "true",
+                async                  : "true"
         ]
     }
 
