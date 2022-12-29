@@ -46,7 +46,8 @@ openApiGenerate {
             hideGenerationTimestamp: "true",
             generateSupportingFiles: "false",
             useFeignClientUrl      : "true",
-            useTags                : "true"
+            useTags                : "true",
+            async                  : "true"
     ]
 }
 
