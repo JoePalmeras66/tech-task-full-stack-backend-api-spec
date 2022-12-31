@@ -1,0 +1,31 @@
+plugins {
+    id "org.openapi.generator" version "$openApiGraglePluginVersion"
+}
+
+version = "$version"
+
+openApiGenerate {
+    generatorName = "typescript-fetch"
+    inputSpec = "$rootDir/yaml-spec/openapi.yaml".toString()
+    outputDir = "$projectDir".toString()
+    apiPackage = "tech.task.api"
+    modelPackage = "tech.task.api.model"
+    configOptions = [
+            interfaceOnly          : "true",
+            skipDefaultInterface   : "true",
+            hideGenerationTimestamp: "true",
+            generateSupportingFiles: "true",
+            async                  : "true",
+            npmName: "tech-task-api-ts-client",
+            npmVersion: "$project.version",
+            npmRepository: "${artifactory_contextUrl}/tech-task-npm-dev-local/"
+    ]
+}
+
+task customCleanUp(type:Delete) {
+    delete "$rootDir/type-script-client/src"
+    delete "$rootDir/type-script-client/.openapi-generator"
+    delete "$rootDir/**/*.tgz"
+}
+
+tasks.clean.dependsOn(tasks.customCleanUp)
