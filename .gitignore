@@ -4,3 +4,19 @@
 # Ignore Gradle build output directory
 build
 .idea
+/type-script-client/.gitignore
+/type-script-client/.npmignore
+/type-script-client/.openapi-generator-ignore
+/type-script-client/.openapi-generator/FILES
+/type-script-client/.openapi-generator/VERSION
+/type-script-client/README.md
+/type-script-client/package.json
+/type-script-client/src/apis/RandomusersApi.ts
+/type-script-client/src/apis/index.ts
+/type-script-client/src/index.ts
+/type-script-client/src/models/PageableRandomUserDTO.ts
+/type-script-client/src/models/RandomUserDTO.ts
+/type-script-client/src/models/index.ts
+/type-script-client/src/runtime.ts
+/type-script-client/tsconfig.json
+/type-script-client/*.tgz
