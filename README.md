@@ -8,7 +8,7 @@ What is this repository for?
 
 How do I get set up?
 
-    clone the code from the following repository address : https://bitbucket.org/helecloud/billing-api-spec/src/master/
+    clone the code from the following repository address : https://github.com/JoePalmeras66/tech-task-full-stack-backend-api-spec
     Make sue you have JAVA 17
     Run ./gradlew build to build the project and run the unit tests
     Database configuration - TBD
