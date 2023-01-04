@@ -33,7 +33,6 @@ dependencyResolutionManagement{
 }
 
 rootProject.name = 'tech-task-full-stack-backend-api-spec'
-include "api"
 include "spring-web-client"
 include "type-script-client"
 include "api:tech-task"
