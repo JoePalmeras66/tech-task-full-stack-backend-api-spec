@@ -24,7 +24,7 @@ servers:
   - url: http://localhost:8080/techtask/api/v1
     description: for local testing
 tags:
-  - name: randomusers
+  - name: RandomUsers
     description: Everything about your Random User's
     externalDocs:
       description: Find out more
@@ -33,7 +33,7 @@ paths:
   /randomusers/all:
     get:
       tags:
-        - randomusers
+        - RandomUsers
       summary: Find ALL Random User's by multiple Filter-Parameters (Pagination)
       description: Find ALL Random User's by multiple Filter-Parameters (Pagination)
       operationId: getRandomUsers
@@ -62,7 +62,7 @@ paths:
   /randomusers/all/stream:
     get:
       tags:
-        - randomusers
+        - RandomUsers
       summary: Find ALL Random User's by multiple Filter-Parameters
       description: Find ALL Random User's by multiple Filter-Parameters
       operationId: getStreamRandomUsers
